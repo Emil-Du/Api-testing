@@ -3,9 +3,8 @@ on:
   push:
     branches: [ main ]
   schedule:
-    # Runs every day at 09:00 UTC (The "Specific Time" requirement)
     - cron: '0 9 * * *'
-  workflow_dispatch: # Adds a button to run it manually for "Proof"
+  workflow_dispatch: 
 
 jobs:
   test:
