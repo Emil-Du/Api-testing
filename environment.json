@@ -3,6 +3,12 @@
 	"name": "Exercise 2",
 	"values": [
 		{
+			"key": "client_email",
+			"value": "",
+			"type": "default",
+			"enabled": true
+		},
+		{
 			"key": "access_token",
 			"value": "",
 			"type": "default",
