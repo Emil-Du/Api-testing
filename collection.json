@@ -21,6 +21,7 @@
               "                 \"Subject: \" + uniqueId + \"\\r\\n\\r\\n\" +\r",
               "                 \"Test Body\";\r",
               "\r",
+              "console.log(\"DEBUG: Recipient is -> \" + pm.variables.get(\"client_email\"));\r",
               "\r",
               "const encoded = Buffer.from(emailStr).toString('base64')\r",
               "    .replace(/\\+/g, '-')\r",
