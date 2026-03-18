@@ -18,7 +18,6 @@ jobs:
       - name: Install Newman
         run: npm install -g newman
       - name: Run Gmail Collection
-        # This passes the token as a parameter (Requirement 2.2 Note)
         run: |
           newman run collection.json \
           -e environment.json \
