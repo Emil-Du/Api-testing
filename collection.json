@@ -17,7 +17,7 @@
               "const uniqueId = \"Task2_\" + Date.now();\r",
               "pm.environment.set(\"shared_tag\", uniqueId);\r",
               "\r",
-              "const emailStr = \"To: \" + pm.environment.get(\"client_email\") + \"\\r\\n\" +\r",
+              "const emailStr = \"To: \" + pm.variables.get(\"client_email\") + \"\\r\\n\" +\r",
               "                 \"Subject: \" + uniqueId + \"\\r\\n\\r\\n\" +\r",
               "                 \"Test Body\";\r",
               "\r",
