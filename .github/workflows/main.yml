@@ -1,0 +1,26 @@
+name: Scheduled execution
+on:
+  push:
+    branches: [ main ]
+  schedule:
+    # Runs every day at 09:00 UTC (The "Specific Time" requirement)
+    - cron: '0 9 * * *'
+  workflow_dispatch: # Adds a button to run it manually for "Proof"
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Install Newman
+        run: npm install -g newman
+      - name: Run Gmail Collection
+        # This passes the token as a parameter (Requirement 2.2 Note)
+        run: |
+          newman run collection.json \
+          -e environment.json \
+          --env-var "access_token=${{ secrets.GMAIL_TOKEN }}"
