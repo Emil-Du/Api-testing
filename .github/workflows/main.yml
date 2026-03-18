@@ -24,3 +24,4 @@ jobs:
           newman run collection.json \
           -e environment.json \
           --env-var "access_token=${{ secrets.GMAIL_TOKEN }}"
+          --env-var "client_email=${{ secrets.GMAIL_USER_EMAIL }}"
