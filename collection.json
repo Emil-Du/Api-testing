@@ -15,18 +15,19 @@
           "script": {
             "exec": [
               "const uniqueId = \"Task2_\" + Date.now();\r",
-              "\r",
               "pm.environment.set(\"shared_tag\", uniqueId);\r",
               "\r",
-              "const email = `To: ${pm.environment.get(\"client_email\")}\\nSubject: ${uniqueId}\\n\\nTesting`;\r",
+              "const email = `To: ${pm.environment.get(\"client_email\")}\\r\\n` +\r",
+              "              `Subject: ${uniqueId}\\r\\n` +\r",
+              "              `Content-Type: text/plain; charset=\"UTF-8\"\\r\\n\\r\\n` + \r",
+              "              `Testing body content for ${uniqueId}`;\r",
+              "\r",
               "const encoded = Buffer.from(email).toString('base64')\r",
               "    .replace(/\\+/g, '-')\r",
               "    .replace(/\\//g, '_')\r",
               "    .replace(/=+$/, '');\r",
               "\r",
-              "pm.variables.set(\"email_raw\", encoded);\r",
-              "\r",
-              ""
+              "pm.variables.set(\"email_raw\", encoded);"
             ],
             "type": "text/javascript",
             "packages": {},
