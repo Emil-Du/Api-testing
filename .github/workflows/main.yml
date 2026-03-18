@@ -18,8 +18,12 @@ jobs:
       - name: Install Newman
         run: npm install -g newman
       - name: Run Gmail Collection
+        env:
+          # This pulls the secret from GitHub's vault into the runner's memory
+          GMAIL_SECRET_EMAIL: ${{ secrets.GMAIL_USER_EMAIL }}
+          GMAIL_SECRET_TOKEN: ${{ secrets.GMAIL_TOKEN }}
         run: |
           newman run collection.json \
           -e environment.json \
-          --env-var "access_token=${{ secrets.GMAIL_TOKEN }}"
-          --env-var "client_email=${{ secrets.GMAIL_USER_EMAIL }}"
+          --env-var "client_email=$GMAIL_SECRET_EMAIL" \
+          --env-var "access_token=$GMAIL_SECRET_TOKEN"
